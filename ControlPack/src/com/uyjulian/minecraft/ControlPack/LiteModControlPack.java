@@ -8,14 +8,12 @@ public class LiteModControlPack implements LiteMod {
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "ControlPack";
 	}
 
 	@Override
 	public String getVersion() {
-		// TODO Auto-generated method stub
-		return null;
+		return "null";
 	}
 
 	@Override
