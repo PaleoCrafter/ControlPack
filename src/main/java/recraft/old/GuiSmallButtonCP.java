@@ -1,4 +1,4 @@
-package recraft.controlpack;
+package recraft.old;
 
 import net.minecraft.client.gui.GuiButton;
 
