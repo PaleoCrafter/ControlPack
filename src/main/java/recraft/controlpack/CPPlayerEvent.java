@@ -1,6 +1,6 @@
 package recraft.controlpack;
 
-import java.util.ArrayList;
+import java.util.Collection;
 
 import net.malisis.core.MalisisCore;
 import net.malisis.core.event.user.UserAttackEvent;
@@ -18,9 +18,6 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.Action;
-
-import com.google.common.collect.Multimap;
-
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class CPPlayerEvent
@@ -63,24 +60,20 @@ public class CPPlayerEvent
 		
 		ItemStack stack;
 		Item item;
-		float damage = 0F;
+		double damage = 0F;
 		for(int i = 0; i < 9; i++)
 		{
 			if((stack = player.inventory.mainInventory[i]) != null && (item = stack.getItem()) != null)
 			{
 				if(item instanceof ItemSword)
 				{
-					MalisisCore.Message("Attack : " + i);
-					player.inventory.currentItem = i;
-					return;
-//					Multimap modifiers = ((ItemSword) item).getItemAttributeModifiers();
-//					ArrayList<AttributeModifier> am = (ArrayList<AttributeModifier>) modifiers.get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName());
-//					float itemDamage = 0F;
-//					if(itemDamage > damage)
-//					{
-//						index = i;
-//						damage = itemDamage;
-//					}
+					Collection<AttributeModifier> m = stack.getAttributeModifiers().get(SharedMonsterAttributes.attackDamage.getAttributeUnlocalizedName());
+					double itemDamage = m.iterator().next().getAmount();
+					if(itemDamage > damage)
+					{
+						index = i;
+						damage = itemDamage;
+					}
 				}
 			}
 		}
