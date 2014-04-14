@@ -1,4 +1,4 @@
-package recraft.controlpack;
+package recraft.old;
 
 public class ControlPackWindowStateRestoreData {
 	public int x, y, width, height, windowState;
